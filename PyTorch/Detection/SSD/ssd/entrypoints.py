@@ -202,5 +202,5 @@ def nvidia_ssd(pretrained=True, **kwargs):
         ckpt = ckpt['model']
         if checkpoint_from_distributed(ckpt):
             ckpt = unwrap_distributed(ckpt)
-        m.load_state_dict(ckpt)
+        m.load_state_dict(ckpt,map_location=torch.device("cpu"))
     return m
