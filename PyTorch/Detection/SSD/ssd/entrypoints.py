@@ -198,7 +198,7 @@ def nvidia_ssd(pretrained=True, **kwargs):
     if pretrained:
         checkpoint = 'https://api.ngc.nvidia.com/v2/models/nvidia/ssd_pyt_ckpt_amp/versions/20.06.0/files/nvidia_ssdpyt_amp_200703.pt'
         ckpt_file = _download_checkpoint(checkpoint, force_reload)
-        ckpt = torch.load(ckpt_file,map_location=torch.device("cpu"))
+        ckpt = torch.load(ckpt_file,**kwargs,map_location=torch.device("cpu"))
         ckpt = ckpt['model']
         if checkpoint_from_distributed(ckpt):
             ckpt = unwrap_distributed(ckpt)
