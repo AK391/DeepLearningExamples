@@ -110,7 +110,7 @@ def nvidia_ssd_processing_utils():
             NCHW = np.swapaxes(np.swapaxes(NHWC, 1, 3), 2, 3)
             tensor = torch.from_numpy(NCHW)
             tensor = tensor.contiguous()
-            tensor = tensor.cuda()
+            tensor = tensor.cpu()
             tensor = tensor.float()
             if fp16:
                 tensor = tensor.half()
